@@ -5,18 +5,16 @@
 #
 #  Revised: 1-17-2020
 #=============================================================================
-NPROC    = 1
 NAME     = stab 
 DEBUG    =
 OPT      = -O2
-FFLAGS   = -cpp -ffixed-line-length-120 -freal-4-real-8 -fdefault-real-8 \
+FFLAGS   = -cpp -ffixed-line-length-120 -fdefault-real-8 -fdefault-double-8 \
            -std=legacy $(DEFINES) $(OPT) $(DEBUG)
-F90FLAGS = -cpp -freal-4-real-8 -fdefault-real-8 \
-           $(DEFINES) $(OPT) $(DEBUG)
+F90FLAGS = -cpp -fdefault-real-8 -fdefault-double-8 $(DEFINES) $(OPT) $(DEBUG)
 OFLAGS   = 
 LIB      = -L$(HOME)/local/OpenBLAS/lib -lopenblas
-F90COMP  = gfortran 
-FCOMP    = gfortran 
+FC       = gfortran 
+F77      = gfortran 
 
 .SUFFIXES: .f90 
 
@@ -39,7 +37,7 @@ endif
 ALL:  $(NAME) getevec getalpha getab getax
 
 $(NAME): $(MODS) $(OBJECTS) $(OBJS1) $(OBJS2)
-	$(F90COMP) $(OFLAGS) $(LIB) $(MODS) $(OBJECTS) $(OBJS1) $(OBJS2) -o $(NAME)
+	$(FC) $(OFLAGS) $(LIB) $(MODS) $(OBJECTS) $(OBJS1) $(OBJS2) -o $(NAME)
 
 all: $(NAME) getevec getalpha getab getax
 
@@ -48,22 +46,22 @@ $(OBJS1): $(MODS)
 $(OBJECTS): stuff.o
 
 .f90.o:
-	$(F90COMP) $(F90FLAGS) -c $*.f90
+	$(FC) $(F90FLAGS) -c $*.f90
 
 .f.o:
-	$(FCOMP) $(FFLAGS) -c $*.f
+	$(F77) $(FFLAGS) -c $*.f
 
 clean:
 	$(RM) -f *.o *.mod $(NAME) getax getab getevec getalpha
 
 getevec: getevec.o
-	$(F90COMP) $(OFLAGS) getevec.o -o getevec
+	$(FC) $(OFLAGS) getevec.o -o getevec
 
 getalpha: getalpha.o
-	$(F90COMP) $(OFLAGS) getalpha.o -o getalpha
+	$(FC) $(OFLAGS) getalpha.o -o getalpha
 
 getab: getab.o
-	$(F90COMP) $(OFLAGS) getab.o -o getab
+	$(FC) $(OFLAGS) getab.o -o getab
 
 getax: getax.o
-	$(F90COMP) $(OFLAGS) getax.o -o getax
+	$(FC) $(OFLAGS) getax.o -o getax
