@@ -30,11 +30,13 @@ calch.o mbump.o circh.o
 #OBJS1 = fd_temporal.o fd_spatial_m.o
 OBJS1 = fd_temporal.o fd_spatial.o
 
-OBJS2 = spline.o piksr2.o 
+OBJS2 = spline.o
 
 ifdef USE_NR
-	OBJS2 += rtsafe.o
+	OBJS2 += nr_rtsafe.o nr_rtflsp.o nr_piksr2.o
 endif
+
+ALL:  $(NAME) getevec getalpha getab getax
 
 $(NAME): $(MODS) $(OBJECTS) $(OBJS1) $(OBJS2)
 	$(F90COMP) $(OFLAGS) $(LIB) $(MODS) $(OBJECTS) $(OBJS1) $(OBJS2) -o $(NAME)
