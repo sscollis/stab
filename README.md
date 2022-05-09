@@ -2,5 +2,16 @@
 
 Updated to build with gfortran on Darwin
 
-S. Scott Collis
-Fri Jan 17 21:10:23 MST 2020
+Currently uses a couple of Numerical-Recepies in FORTRAN routines that are
+commercially licensed and not distributed here.
+
+To build use:
+
+    ln -s gcc.mak Makefile
+    make USE_NR=1
+
+It would be easy to remove the dependency on NR and I encourage someone to do
+so.
+
+S. Scott Collis\
+Mon May  9 15:03:57 MDT 2022
