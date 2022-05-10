@@ -29,11 +29,20 @@ calch.o mbump.o circh.o
 OBJS1 = fd_temporal.o fd_spatial.o
 
 OBJS2 = spline.o
-
+#
+# Optionally use Numerical-Recipes (commercial licensed)
+#
 ifdef USE_NR
-	OBJS2 += nr_rtsafe.o nr_rtflsp.o nr_piksr2.o
+  ifeq ($(LIBNR_DIR),)
+    LIBNR_DIR = $(HOME)/git/NR-utilities
+  endif
+  LIB += -L$(LIBNR_DIR) -lnr 
 endif
-
+#
+#ifdef USE_NR
+#  OBJS2 += nr_rtsafe.o nr_rtflsp.o nr_piksr2.o
+#endif
+#
 ALL:  $(NAME) getevec getalpha getab getax
 
 $(NAME): $(MODS) $(OBJECTS) $(OBJS1) $(OBJS2)
