@@ -14,4 +14,3 @@ It would be easy to remove the dependency on NR and I encourage someone to do
 so.
 
 S. Scott Collis\
-Mon May  9 15:03:57 MDT 2022
