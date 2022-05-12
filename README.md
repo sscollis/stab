@@ -13,4 +13,4 @@ To build use:
 It would be easy to remove the dependency on NR and I encourage someone to do
 so.
 
-S. Scott Collis\
+S. Scott Collis
