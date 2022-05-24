@@ -2,12 +2,14 @@
 
 This uses a direct approach using either Chebyshev collocation or high-order
 finite difference.   This is complemented by the `shoot` solver which uses
-and ODE solver (shooting).
+an ODE solver with Conte orthogonalization and shooting to satisfy the boundary
+conditions.  I suggest using `shoot` to polish the eigensolutions identified
+by `stab`.
 
-Updated to build with the GCC gfortran compiler on MacOS and Linux.
+The `stab` code has been updated to build with the GCC gfortran compiler on
+both MacOS and Linux and older builds have not been recently used.
 
-Currently uses a couple of Numerical-Recipes in FORTRAN routines that are
-commercially licensed and not distributed here.
+## Building
 
 To build use:
 ```bash
@@ -15,10 +17,17 @@ To build use:
     make USE_NR=1
 ```
 
-Notes:
-1.  It would be easy to remove the dependency on NR and I encourage 
+## Notes
+`stab` currently uses a couple of Numerical-Recipes in FORTRAN
+routines that are commercially licensed and therefore not distributed here.
+You can easily replace these with public versions and are encouraged to do so.
+
+1.  It would be easy to remove the dependency on NR and I encourage
     someone to do so.
 2.  You may **not** add the NR software to this repository and you may only use
-    it if you have a valid license to do so
+    it if you have a valid license to do so.
+
+## Contact
 
 S. Scott Collis
+scollis@gmail.com

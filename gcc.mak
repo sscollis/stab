@@ -5,18 +5,18 @@
 #
 #  Revised: 1-17-2020
 #=============================================================================
-NAME     = stab 
+NAME     = stab
 DEBUG    =
 OPT      = -O2
 FFLAGS   = -cpp -ffixed-line-length-120 -fdefault-real-8 -fdefault-double-8 \
            -std=legacy $(DEFINES) $(OPT) $(DEBUG)
 F90FLAGS = -cpp -fdefault-real-8 -fdefault-double-8 $(DEFINES) $(OPT) $(DEBUG)
-OFLAGS   = 
+OFLAGS   =
 LIB      = -L$(HOME)/local/OpenBLAS/lib -lopenblas
-FC       = gfortran 
-F77      = gfortran 
+FC       = gfortran
+F77      = gfortran
 
-.SUFFIXES: .f90 
+.SUFFIXES: .f90
 
 MODS = stuff.o stencils.o
 
@@ -36,7 +36,10 @@ ifdef USE_NR
   ifeq ($(LIBNR_DIR),)
     LIBNR_DIR = $(HOME)/git/NR-utilities
   endif
-  LIB += -L$(LIBNR_DIR) -lnr 
+  LIB += -L$(LIBNR_DIR) -lnr
+else
+  $(info STAB currently requires Numerical-Recipes in FORTRAN routines)
+  $(error See README.md for details, build with USE_NR=1)
 endif
 #
 #ifdef USE_NR
