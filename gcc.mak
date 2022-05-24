@@ -42,6 +42,8 @@ else
   $(error See README.md for details, build with USE_NR=1)
 endif
 #
+# These are the NR files explicitly needed by STAB
+#
 #ifdef USE_NR
 #  OBJS2 += nr_rtsafe.o nr_rtflsp.o nr_piksr2.o
 #endif
