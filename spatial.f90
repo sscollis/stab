@@ -16,7 +16,7 @@
         integer i, j, k, ix, ier, ind
         integer i0, idof, j0, jdof
         
-        character*80 name
+        character(80) name
         
         real vm(ny,ndof,nx)
         real eta(ny), y(ny), deta(ny), d2eta(ny)

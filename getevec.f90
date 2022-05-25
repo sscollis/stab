@@ -23,9 +23,8 @@
         complex, allocatable :: eval(:), evec(:,:)
         complex :: omega, alpha, beta, k
         real :: x, Re, Ma, Pr, yi, ymax, scale
-        character*80 :: base, fname
+        character(80) :: base, fname
         integer :: iver, iloc, nmax
-
 #if 0 
         integer, external :: iargc
 #endif
@@ -44,6 +43,7 @@
         open(unit=10,file=fname,form='unformatted',status='old',err=1000)
         read(10) nx, ny, ndof, itype, ievec, icurve, top, wall, wallt
         allocate( y(ny), eta(ny), deta(ny), d2eta(ny) )
+        write(*,*) "itype = ", itype
         if (itype.eq.1) then
           nmax = ndof*ny
         else

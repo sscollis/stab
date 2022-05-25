@@ -15,7 +15,7 @@
         integer i, j, k, ix, ier, ind
         integer i0, idof, j0, jdof
         
-        character*80 name
+        character(80) name
         
         real vm(ny,ndof,nx)
         real eta(ny), y(ny), deta(ny), d2eta(ny)
@@ -282,7 +282,7 @@
         call getmat(tm*te, rmu, rlm, con, dmu, d2mu,    &
                     dlm,   d2lm,   dcon,   d2con)
 
- !.... nondimensionalize
+!.... nondimensionalize
  
         rmu   = rmu / rmue
         dmu   = dmu * Te / rmue
@@ -1355,21 +1355,22 @@
           if ( j .lt. 0 .or. j .gt. 2*ndof*ny ) goto 100
 
           if (j .ne. 0) then
-            open (unit=20,file='space.dat',form='formatted',status='unknown')
+            open (unit=20,file='space.dat',form='formatted', &
+                  status='unknown')
             do i = 1, ny
 !           i0 = (i+ny-1)*ndof
               i0 = (i-1)*ndof
               write (20,50)eta(i), &
-                            real(evec(i0+1,j)), &
-                            aimag(evec(i0+1,j)), &
-                            real(evec(i0+2,j)), &
-                            aimag(evec(i0+2,j)), &
-                            real(evec(i0+3,j)), &
-                            aimag(evec(i0+3,j)), &
-                            real(evec(i0+4,j)), &
-                            aimag(evec(i0+4,j)), &
-                            real(evec(i0+5,j)), &
-                            aimag(evec(i0+5,j))
+                           real(evec(i0+1,j)), &
+                           aimag(evec(i0+1,j)), &
+                           real(evec(i0+2,j)), &
+                           aimag(evec(i0+2,j)), &
+                           real(evec(i0+3,j)), &
+                           aimag(evec(i0+3,j)), &
+                           real(evec(i0+4,j)), &
+                           aimag(evec(i0+4,j)), &
+                           real(evec(i0+5,j)), &
+                           aimag(evec(i0+5,j))
             end do
             close (20)
             goto 100
@@ -1385,4 +1386,3 @@
  50     format(1p,11(e20.13,1x))
 
         end
-

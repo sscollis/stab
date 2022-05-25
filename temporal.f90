@@ -17,6 +17,8 @@
         integer i, j, k, ix, ier, ind
         integer i0, idof, j0, jdof
         
+!       integer ievec, curve, top, wall, wallt, ider
+
         real vm(ny,ndof,nx)
         real dvm(ny,ndof,nx)
         real d2vm(ny,ndof,nx)
@@ -58,14 +60,15 @@
         complex Dh(ny,ndof,ndof), Ah(ny,ndof,ndof), Bh(ny,ndof,ndof)
         complex :: scale
         
-        complex A0(ndof*ny,ndof*ny), B0(ndof*ny,ndof*ny), C0(ndof*ny,ndof*ny)
+        complex A0(ndof*ny,ndof*ny), B0(ndof*ny,ndof*ny), &
+                C0(ndof*ny,ndof*ny)
         
         complex evec(ndof*ny,ndof*ny), alp(ndof*ny), bet(ndof*ny)
         complex omg(ndof*ny), cs(ndof*ny)
         real    temp1(ndof*ny), temp2(ndof*ny)
         integer index(ndof*ny)
         
-        character*80 name
+        character(80) name
 
         complex up(ny), vp(ny)
 
@@ -261,7 +264,7 @@
         call getmat(tm*te, rmu, rlm, con, dmu, d2mu,    &
                     dlm,   d2lm,   dcon,   d2con)
 
- !.... nondimensionalize
+!.... nondimensionalize
  
         rmu   = rmu / rmue
         dmu   = dmu * Te / rmue
@@ -337,7 +340,7 @@
         
         C(:,2,2) = rhom * u3m
         
-        D(:,2,1) = u1m * gum(:,1,1) + u2m * gum(:,1,2) + u3m * gum(:,1,3)  &
+        D(:,2,1) = u1m * gum(:,1,1) + u2m * gum(:,1,2) + u3m * gum(:,1,3) &
                    + gtm(:,1) / (gamma * Ma**2)
         D(:,2,2) = rhom * gum(:,1,1)
         D(:,2,3) = rhom * gum(:,1,2)
@@ -404,7 +407,7 @@
         
         C(:,3,3) = rhom * u3m
         
-        D(:,3,1) = u1m * gum(:,2,1) + u2m * gum(:,2,2) + u3m * gum(:,2,3)  &
+        D(:,3,1) = u1m * gum(:,2,1) + u2m * gum(:,2,2) + u3m * gum(:,2,3) &
                    + gtm(:,2) / (gamma * Ma**2)
         D(:,3,2) = rhom * gum(:,2,1)
         D(:,3,3) = rhom * gum(:,2,2)
@@ -880,9 +883,10 @@
 !.... write out the eigensystem in an unformatted output file
 
         open(unit=77,file=name,form='unformatted',status='unknown')
-        write (77) ny, ndof, itype
+        write (77) ind, ny, ndof, itype, ievec, curve, &
+                   top, wall, wallt, ider
         write (77) omega, alpha, beta, Re, Ma, Pr
-        write (77) y, eta, deta, d2eta
+        write (77) x, y, eta, deta, d2eta, yi, ymax
         write (77) omg
         write (77) evec
         close (77)
@@ -958,4 +962,3 @@
  50     format(1p,11(e20.13,1x))
 
         end
-

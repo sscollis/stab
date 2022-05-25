@@ -18,7 +18,7 @@
         integer :: i, j, k, nxm, nym, ndofm, ier, iver
         real :: tmp
 
-        character*80 :: base, fname
+        character(80) :: base, fname
 !=============================================================================!
         
 !.... read the mean field and spline to the new grid
@@ -43,7 +43,8 @@
  30     continue
         rewind(10)
 
-        allocate( ym(nym,nxm), vt(nym,nxm,ndof), vs(nym,nxm,ndof), STAT=ier )
+        allocate( ym(nym,nxm), vt(nym,nxm,ndof), vs(nym,nxm,ndof), &
+                  STAT=ier )
         if (ier .ne. 0) then
           write(*,*) 'Error allocating mean field'
           call exit(1)
@@ -176,4 +177,3 @@
         call exit(1)
 
         end
-

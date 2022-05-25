@@ -33,7 +33,7 @@
         use stuff
         implicit none
 
-        character*80 :: name = 'evec.dat'
+        character(80) :: name = 'evec.dat'
         integer :: ind = 0
 !==============================================================================
         

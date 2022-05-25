@@ -19,7 +19,7 @@
         real vm(ny,ndof,nx), isign, perf
         real, external :: EPICG
 
-        character*80 name
+        character(80) name
         
         real eta(ny), y(ny), deta(ny), d2eta(ny)
         
@@ -241,7 +241,7 @@
         call getmat(tm*te, rmu, rlm, con, dmu, d2mu,    &
                     dlm,   d2lm,   dcon,   d2con)
 
- !.... nondimensionalize
+!.... nondimensionalize
  
         rmu   = rmu / rmue
         dmu   = dmu * Te / rmue
@@ -1049,9 +1049,10 @@
 !.... write out the eigensystem in an unformatted output file
 
         open(unit=77,file=name,form='unformatted',status='unknown')
-        write (77) ny, ndof, itype
+        write (77) ind, ny, ndof, itype, ievec, curve, &
+                   top, wall, wallt, ider
         write (77) omega, alpha, beta, Re, Ma, Pr
-        write (77) y, eta, deta, d2eta
+        write (77) x, y, eta, deta, d2eta, yi, ymax
         write (77) omg
         write (77) evec
         close (77)
@@ -1077,7 +1078,8 @@
         if ( j .lt. 0 .or. j .gt. ndof*ny ) goto 100
 
         if (j .ne. 0) then
-          open (unit=20, file='eig.dat', form='formatted', status='unknown')
+          open (unit=20, file='eig.dat', form='formatted', &
+                status='unknown')
           do i = 1, ny
             i0 = (i-1)*ndof
             write (20,50) y(i), &
@@ -1106,4 +1108,3 @@
  50     format(1p,11(e20.13,1x))
 
         end
-

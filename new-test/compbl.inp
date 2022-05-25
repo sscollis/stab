@@ -1,0 +1,9 @@
+0       ! 0 = constant viscosity, 1 = Sutherland
+0.001   ! Viscosity,mu (makes delta=1)
+0.3     ! Mach number
+1.0     ! Prandtl number
+0.0     ! Beta
+1000    ! Re_delta
+n       ! write on a grid (y,n)
+t       ! (t)emporal or (s)patial
+
