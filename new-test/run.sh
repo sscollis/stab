@@ -22,4 +22,9 @@ evec.dat
 371
 0
 EOF
+#
+# Shooting to cleanup spatial 
+#
+../../shoot/shoot < shoot.inp
+#
 exit $?
