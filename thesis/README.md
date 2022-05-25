@@ -1,5 +1,7 @@
 # Tollmein-Schilichting Test case
 
+This is the TS test case from Collis Ph.D. Thesis, Chapter 4.
+
 ## Spatial results
 
 Note that these results were likely computed in quad precision on
