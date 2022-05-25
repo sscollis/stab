@@ -138,6 +138,17 @@
         iver = iver + 1
         call makename(base,iver,fname)
         open (unit=20, file=fname, form='formatted', status='unknown')
+        write(20,"('# Re = ',1pe13.6,', Ma = ',1pe13.6,', Pr = ',1pe13.6)") &
+          Re, Ma, Pr
+        if (itype.eq.1 .or. itype.eq.3) then
+          write(20,"('# Omega = (',1pe21.13E3,',',1pe21.13E3,')')") eval(j)
+          write(20,"('# Alpha = (',1pe21.13E3,',',1pe21.13E3,')')") alpha
+          write(20,"('# Beta  = (',1pe21.13E3,',',1pe21.13E3,')')") beta
+        elseif (itype.eq.2 .or. itype.eq.4) then
+          write(20,"('# Omega = (',1pe21.13E3,',',1pe21.13E3,')')") omega 
+          write(20,"('# Alpha = (',1pe21.13E3,',',1pe21.13E3,')')") eval(j) 
+          write(20,"('# Beta  = (',1pe21.13E3,',',1pe21.13E3,')')") beta
+        endif 
         do i = ny, 1, -1
 !         i0 = (i+ny-1)*ndof
           i0 = (i-1)*ndof
@@ -172,7 +183,7 @@
 !.... put a version number on the filename
 !
 !=============================================================================!
-      character*80 base, fname
+      character(80) base, fname
 
       length = index(base,' ')
       fname = base
