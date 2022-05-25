@@ -38,8 +38,8 @@ ifdef USE_NR
   endif
   LIB += -L$(LIBNR_DIR) -lnr
 else
-  $(info STAB currently requires Numerical-Recipes in FORTRAN routines)
-  $(error See README.md for details, build with USE_NR=1)
+  $(warning STAB currently requires Numerical-Recipes in FORTRAN routines)
+  $(info See README.md for details, build with USE_NR=1)
 endif
 #
 # These are the NR files explicitly needed by STAB
