@@ -4,9 +4,11 @@
         use stuff
         use material
         implicit none
-        
+
         integer :: itmp
 !==============================================================================
+
+#define VERBOSE
 
 !.... Constant mu or Sutherland's law
 
@@ -15,7 +17,7 @@
         if (mattyp .ne. 0 .and. mattyp .ne. 1) goto 1
 
         if (mattyp .eq. 1) then         ! for Sutherland's law (AIR)
-        
+
 !.... get the freestream stagnation temperature
 
           write (*,"('Enter the freestream T0 (K) ==> ',$)")
@@ -23,10 +25,10 @@
           te    = t0 / ( one + pt5 * gamma1 * Ma**2 )
 
 !.... set fluid properties
-        
+
           datmat(1) = 1.715336725523065e-05     ! 1.716e-5
           datmat(2) = 273.0
-          datmat(3) = 110.4                     ! 111.0 
+          datmat(3) = 110.4                     ! 111.0
         else
           datmat(1) = one
           datmat(2) = zero
@@ -37,7 +39,7 @@
         read (*,*) Ma, Re, Pr
 
 !.... get the fluid properties at the reference state
-        
+
         call getmat(te,   rmue, rlme, cone, dmue, d2mue, &
                     dlme, d2lme, dcone, d2cone)
 
@@ -54,16 +56,19 @@
         end if
         write(*,"('top, wall, wallt, curve ==> ',$)")
         read (*,*) top, wall, wallt, curve
-        
+
         ymin = zero
 
  10     continue
-!       write (*,"('(1) Temporal,(2) Spatial,(3) FD_temporal,',/, &
-!     &  '(4) FD_spatial (5) Stokes,(6) Bump,',/, &
-!     &  '(7) Multi Temporal (8) Multi Spatial (9) Multi Bump ==> ')")
+#ifdef VERBOSE
+        write (*,"('(1) Temporal,(2) Spatial,(3) FD_temporal,',/, &
+      &  '(4) FD_spatial (5) Stokes,(6) Bump,',/, &
+      &  '(7) Multi Temporal (8) Multi Spatial (9) Multi Bump ==> ')")
+#else
         write (*,"('Enter itype ==> ',$)")
+#endif
         read (*,*) itype
-        
+
         if (itype .eq. 1 .or. itype .eq. 3) then
           write (*,"('Enter alphar, alphai ==> ',$)")
           read (*,*) alphar, alphai
@@ -142,7 +147,6 @@
 !       write (*,*) 'beta   = ',beta
 !       write (*,*) 'omega  = ',omega
 !       write (*,*)
-        
+
         return
         end
-
