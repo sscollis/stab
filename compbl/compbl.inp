@@ -7,3 +7,7 @@
 n       ! write on a grid (y,n)
 t       ! (t)emporal or (s)patial
 
+Notes:
+  1. This is input for the COMPBL compressible boundary layer solver
+  2. This is very similar (but not exactly the same) as the case from
+     Collis Ph.D. thesis, chapter 4

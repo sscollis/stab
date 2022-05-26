@@ -6,4 +6,5 @@
 1						! delta/L
 
 Notes:
-  1. This is the Tollmein-Schlichting Case from Collis Ph.D. Thesis, Chapter 4
+  1. This is an input file for the FSC compressible Falkner-Skan Solver
+  2. This is the Tollmein-Schlichting Case from Collis Ph.D. Thesis, Chapter 4

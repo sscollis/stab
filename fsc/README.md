@@ -1,6 +1,8 @@
 # Tollmein-Schilichting Test case
 
 This is the TS test case from Collis Ph.D. Thesis, Chapter 4.
+It is computing using the FSC solver for the mean flow which matches
+the thesis results exactly.
 
 ## Spatial results
 

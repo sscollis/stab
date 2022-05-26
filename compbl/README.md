@@ -1,11 +1,10 @@
 # Tollmein-Schilichting Test case
 
-This is the TS test case from Collis Ph.D. Thesis, Chapter 4.
+This is the TS test case similar to Collis Ph.D. Thesis, Chapter 4
+but instead of using FSC it uses the COMPBL solver.  These give 
+slightly different results.
 
 ## Spatial results
-
-Note that these results were likely computed in quad precision on
-a Cray (Cray's rocked).
 
 ```bash
 FSC: M=0.3, lambda=0, beta_h=0, Tw/T0=1, Re_\delta_1 = 1000, Pr=1
