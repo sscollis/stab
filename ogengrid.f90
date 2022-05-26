@@ -31,8 +31,8 @@
           detam1 = (bb - etam1)**2 / (aa * bb)
           d2etam1 = -two * (bb - etam1)**3 / (aa * bb)**2
 
+          open(unit=30,file='map.out',form='formatted',status='unknown')
           write(30,10) ym1, etam1, detam1, d2etam1
-
           do j = 1, ny
             eta(j)   = (j-1) * dy
             y(j)     = aa * eta(j) / (bb - eta(j))
@@ -40,7 +40,7 @@
             d2eta(j) = -two * (bb - eta(j))**3 / (aa * bb)**2
             write(30,10) y(j), eta(j), deta(j), d2eta(j)
           end do
-
+          close(30)
         else                           ! Mahesh map
 
           rmax = ymax

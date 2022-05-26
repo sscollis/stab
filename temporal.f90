@@ -17,8 +17,6 @@
         integer i, j, k, ix, ier, ind
         integer i0, idof, j0, jdof
         
-!       integer ievec, curve, top, wall, wallt, ider
-
         real vm(ny,ndof,nx)
         real dvm(ny,ndof,nx)
         real d2vm(ny,ndof,nx)

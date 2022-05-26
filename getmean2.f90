@@ -25,7 +25,7 @@
 
         base = 'profile'
         call makename(base,iver,fname)
-!       write(*,"(/,'Reading mean flow from:  ',a)") fname
+        write(*,"('Reading mean flow from:  ',a)") fname
         open (unit=10, file=fname, form='formatted', status='old',err=1000)
         
 !       read (10,*) nxm, nym, ndofm, ymaxm
@@ -92,6 +92,7 @@
 
         base = 'first'
         call makename(base,iver,fname)
+        write(*,"('Reading first derivative from:  ',a)") fname
         open (unit=10, file=fname, form='formatted', status='old',err=1000)
 
         do i = 1, nxm
@@ -132,6 +133,7 @@
 
         base = 'second'
         call makename(base,iver,fname)
+        write(*,"('Reading second derivative from:  ',a)") fname
         open (unit=10, file=fname, form='formatted', status='old',err=1000)
 
         do i = 1, nxm
@@ -176,4 +178,4 @@
 1000    write(*,*) 'Error reading profile...'
         call exit(1)
 
-        end
+        end subroutine getmean2

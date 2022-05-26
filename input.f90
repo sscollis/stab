@@ -132,21 +132,34 @@
 
 !.... Echo the run parameters (it would be best to write to a file)
 
-!       write (*,*)
-!       write (*,*) 'R U N   P A R A M E T E R S'
-!       write (*,*)
-!       write (*,*) 'Mach   = ',Ma
-!       write (*,*) 'Re     = ',Re
-!       write (*,*) 'Pr     = ',Pr
-!       write (*,*) 'T0     = ',T0
-!       write (*,*) 'Te     = ',Te
-!       write (*,*) 'mu     = ',rmue
-!       write (*,*) 'lambda = ',rlme
-!       write (*,*) 'con    = ',cone
-!       write (*,*) 'alpha  = ',alpha
-!       write (*,*) 'beta   = ',beta
-!       write (*,*) 'omega  = ',omega
-!       write (*,*)
-
+#ifdef VERBOSE
+        write (*,*) '==========================='
+        write (*,*) 'R U N   P A R A M E T E R S'
+        write (*,*) '==========================='
+        write (*,*) 'Mattyp  = ',mattyp
+        write (*,*) 'Mach    = ',Ma
+        write (*,*) 'Re      = ',Re
+        write (*,*) 'Pr      = ',Pr
+        write (*,*) 'T0      = ',T0
+        write (*,*) 'Te      = ',Te
+        write (*,*) 'mu      = ',rmue
+        write (*,*) 'lambda  = ',rlme
+        write (*,*) 'con     = ',cone
+        write (*,*) 'itype   = ',itype
+        write (*,*) 'alpha   = ',alpha
+        write (*,*) 'beta    = ',beta
+        write (*,*) 'omega   = ',omega
+        write (*,*) 'ny      = ',ny
+        write (*,*) 'yi      = ',yi
+        write (*,*) 'ymin    = ',ymin
+        write (*,*) 'ymax    = ',ymax
+        write (*,*) 'ider    = ',ider
+        write (*,*) 'top     = ',top
+        write (*,*) 'wall    = ',wall
+        write (*,*) 'wallt   = ',wallt
+        write (*,*) 'curve   = ',curve
+        write (*,*) '==========================='
+        write (*,*)
+#endif
         return
-        end
+        end subroutine input

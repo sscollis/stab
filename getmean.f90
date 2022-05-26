@@ -93,4 +93,4 @@
 1000    write(*,*) 'Error reading profile...'
         stop
 
-        end
+        end subroutine getmean
