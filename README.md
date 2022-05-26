@@ -27,6 +27,18 @@ You can easily replace these with public versions and are encouraged to do so.
 2.  You may **not** add the NR software to this repository and you may only use
     it if you have a valid license to do so.
 
+## Test Cases
+
+Case       |  Description
+-----------|---------------------------------------------------------------------------------------
+`thesis`   |  Test case from Collis Ph.D. thesis, Chapter 4
+`compbl`   |  Similar to `thesis` but using `compbl` instead of `fsc` for mean, slight differences
+`TStest`   |  Tollmein-Schlichting test case
+`CFtest`   |  Cross-flow vortex test case
+`mixl`     |  Mixing layer test case
+`test`     |  Test case for experimentation
+`vk`       |  Case for Vinod Kumar
+
 ## Contact
 
 S. Scott Collis
