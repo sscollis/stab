@@ -29,4 +29,28 @@ omega = 1.1449048146373E-001   2.1951514138197E-003  (yi=1.0, 96)
 k_x = 0.308620690
 ```
 
+## Running the test
+
+The script `run.sh` computes the mean flow using `fsc`, runs both
+the temporal and spatial programs using `stab` and then polishes
+the spatial results using `shoot`.  Note that it assumes locations
+for each of these solves to you may need to adjust in practise.
+
+To plot the streamwise velocity for the spatial eigenfunction using `gnuplot`
+
+```bash
+gnuplot
+set xrange [0:15]
+set xlabel "y"
+set ylabel "u_r, u_i"
+plot "space.1" u 1:4 w l title "u_r", "space.1" u 1:5 w l title "u_i"
+```
+
+or use the command file
+
+```bash
+gnuplot
+load "plot.com"
+```
+
 S. Scott Collis
