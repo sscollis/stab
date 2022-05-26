@@ -6,16 +6,14 @@ for the mean flow which matches the thesis results exactly.
 
 ## Spatial results
 
-Note that these results were likely computed in quad precision on
-a Cray (Cray's rocked).
-
 ```bash
 FSC: M=0.3, lambda=0, beta_h=0, Tw/T0=1, Re_\delta_1 = 1000, Pr=1
 
-k_x = 2.2804739410500E-001  -6.5163146761218E-003  (yi=1.0, 64)
-k_x = 2.2804739411367E-001  -6.5163146912049E-003  (yi=1.0, 96)
+k_x = 2.2804739411412E-001  -6.5163146827854E-003  (yi=1.0, 64)
+k_x = 2.2804739411185E-001  -6.5163146952733E-003  (yi=1.0, 96)
 
-\lambda_{TS} = 27.552103
+\omega = 0.08
+\lambda_{TS} = 2\pi/k_x = 27.552103068969444
 ```
 
 ## Temporal results
@@ -23,10 +21,11 @@ k_x = 2.2804739411367E-001  -6.5163146912049E-003  (yi=1.0, 96)
 ```bash
 FSC: M=0.3, lambda=0, beta_h=0, Tw/T0=1, Re_\delta_1 = 1000, Pr=1
 
-omega = 1.1449048146419E-001   2.1951514140605E-003  (yi=1.0, 64)
-omega = 1.1449048146373E-001   2.1951514138197E-003  (yi=1.0, 96)
+omega = 1.1467880189148E-001  2.3844535289045E-003 (yi=1.0, 64)
+omega = 1.1467880189410E-001  2.3844535276592E-003 (yi=1.0, 96)
 
 k_x = 0.308620690
+\lambda_{TS} = 2\pi/k_x = 20.358924436270254
 ```
 
 ## Running the test
@@ -54,3 +53,4 @@ load "plot.com"
 ```
 
 S. Scott Collis
+sscollis@gmail.com
