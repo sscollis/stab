@@ -31,7 +31,7 @@ You can easily replace these with public versions and are encouraged to do so.
 
 Case       |  Description
 -----------|---------------------------------------------------------------------------------------
-`thesis`   |  Test case from Collis Ph.D. thesis, Chapter 4
+`thesis`   |  Test case from Collis Ph.D. thesis, Chapter 4 (Start here!)
 `compbl`   |  Similar to `thesis` but using `compbl` instead of `fsc` for mean, slight differences
 `TStest`   |  Tollmein-Schlichting test case
 `CFtest`   |  Cross-flow vortex test case

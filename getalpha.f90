@@ -21,7 +21,7 @@
         complex, allocatable :: eval(:), evec(:,:)
         complex :: omega, alpha, beta, k
         real :: x, Re, Ma, Pr, Yi, Ymax
-        character*80 :: base, fname
+        character(80) :: base, fname
         integer :: j, iver, iloc, nmax
 
         integer :: ind, ind1, ind2, ind_inc
@@ -163,7 +163,7 @@
 !.... put a version number on the filename
 !
 !=============================================================================!
-      character*80 base, fname
+      character(80) base, fname
 
       length = index(base,' ')
       fname = base
@@ -177,4 +177,3 @@
 
       return
       end
-

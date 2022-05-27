@@ -24,7 +24,7 @@
         real, allocatable :: vm(:,:)
         complex :: omega, alpha, beta, k, p
         real :: x, Re, Ma, Pr, yi, ymax, scale, gamma=1.4
-        character*80 :: base, fname
+        character(80) :: base, fname
         integer :: iver, iloc, nmax
 
         integer, external :: iargc
@@ -182,7 +182,7 @@
 !.... put a version number on the filename
 !
 !=============================================================================!
-      character*80 base, fname
+      character(80) base, fname
 
       length = index(base,' ')
       fname = base
@@ -196,4 +196,3 @@
 
       return
       end
-
