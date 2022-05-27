@@ -35,6 +35,11 @@ the temporal and spatial programs using `stab` and then polishes
 the spatial results using `shoot`.  Note that it assumes locations
 for each of these solves to you may need to adjust in practise.
 
+```bash
+./run.sh
+```
+## Plotting the results
+
 To plot the streamwise velocity for the spatial eigenfunction using `gnuplot`
 
 ```bash
@@ -51,6 +56,22 @@ or use the command file
 gnuplot
 load "plot.com"
 ```
+## Outputs
+
+Additional output files include:
+
+File        |    Description
+------------|--------------------------------------------
+time.1      |    Temporal eigenfunction from `stab`
+space.1     |    Spatial eigenfunction from `stab`
+efun.out    |    Polished spatial eigenfunction from `shoot`
+adj.out     |    Adjoint spatial eigenfunction from `shoot`
+output.dat  |    Full `shoot` output with nonparallel corrections
+evec.dat    |    The full eigensolution output (from last run of `stab`)
+rho.out     |    Densitymean profile and derivatives
+u.out       |    Streamwise mean profile and derivatives
+w.out       |    Crossflow mean profile and derivatives
+t.out       |    Temperature mean profile and derivatives
 
 S. Scott Collis
 sscollis@gmail.com
