@@ -15,5 +15,5 @@ whereas from Intel on MacOS is using $N_y=96$ is:
 
 $$\alpha = -3.7392546274473E+001  -2.9977113927779E-001 $$
 
-S. Scott Collis
+S. Scott Collis\
 sscollis@gmail.com
