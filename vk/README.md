@@ -1,3 +1,5 @@
+# Test case for Vinod Kumar (Rice Graduate Student)
+
 These are spatial stability results for Vinod Kumar who is using a hyperbolic tangent
 mixing layer profile
 

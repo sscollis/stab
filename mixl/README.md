@@ -1,4 +1,6 @@
-These are results using a profile that Ted computed
+# Mixing Layer Test Case
+
+These are results using a profile that Ted Manning computed
 
 Inviscid, M=1.5
 
@@ -7,7 +9,6 @@ Inviscid, M=1.5
 M=1.5, Re=926, Pr=0.75
 
 0.2578  4.7501018851521E-001  -1.4639699059481E-001
-
 
 Inviscid, M=1.5 (new code, Ny = 96)
 
