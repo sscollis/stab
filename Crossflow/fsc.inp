@@ -1,0 +1,12 @@
+0.3 400.0					! M_e, Re_delta1
+45.0						! Lambda_e (deg.)
+1.0						! Beta_e
+1, 1, 1						! T0, Tw, muw
+1.1409806365839E+00  5.6243094047711E-01
+1						! delta/L
+
+Notes:
+  1. This is an input file for the FSC compressible Falkner-Skan Solver
+  2. This is the Crossflow vortex Case from Collis Ph.D. Thesis, Chapter 4.2
+
+4.6959998836720E-01  4.6959998883669E-01	! f'', g' guesses
