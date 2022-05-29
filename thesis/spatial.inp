@@ -1,6 +1,6 @@
 0		! mattype (0 = constant Mu, 1 = Sutherland)
 0.3 1000 1	! Ma, Re, Pr
-64 1.0 0.0 	! Ny, Yi, Ymax  (Ymax not used for spectral code)
+96 1.0 0.0 	! Ny, Yi, Ymax  (Ymax not used for spectral code)
 1		! Compute eigenfunctions (1/0)
 1		! Internal derivatives (1/0)
 0 0 0 0		! BC: top, wall, wallt, curve
