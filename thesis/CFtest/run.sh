@@ -15,8 +15,8 @@ EOF
 #
 # Spatial problem
 #
-#../stab < spatial.inp
-#../getevec << EOF
+#../../stab < spatial.inp
+#../../getevec << EOF
 #evec.dat
 #371
 #0
@@ -24,6 +24,6 @@ EOF
 #
 # Shooting to cleanup spatial 
 #
-#../../shoot/shoot < shoot.inp
+#../../../shoot/shoot < shoot.inp
 #
 exit $?
