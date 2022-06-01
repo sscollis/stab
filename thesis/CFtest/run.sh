@@ -15,12 +15,12 @@ EOF
 #
 # Spatial problem
 #
-#../../stab < spatial.inp
-#../../getevec << EOF
-#evec.dat
-#371
-#0
-#EOF
+../../stab < spatial.inp
+../../getevec << EOF
+evec.dat
+377
+0
+EOF
 #
 # Shooting to cleanup spatial 
 #
