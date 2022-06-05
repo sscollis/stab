@@ -73,5 +73,5 @@ u.out       |    Streamwise mean profile and derivatives
 w.out       |    Crossflow mean profile and derivatives
 t.out       |    Temperature mean profile and derivatives
 
-S. Scott Collis
-sscollis@gmail.com
+S. Scott Collis\
+flow.physics.simulation@gmail.com
