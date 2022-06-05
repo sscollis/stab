@@ -41,5 +41,5 @@ Case       |  Description
 
 ## Contact
 
-S. Scott Collis
-scollis@gmail.com
+S. Scott Collis\
+flow.physics.simulation@gmail.com
