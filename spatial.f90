@@ -82,8 +82,7 @@
 
         real :: h(ny), dhds(ny), dhdr(ny), dhdsr(ny), dhdrr(ny)
 !==============================================================================
-
-       write(*,*) "Starting Spatial eigenproblem"
+       if (verbose) write(*,*) "Starting Spatial eigenproblem"
 
 !.... determine if inviscid
 
@@ -104,7 +103,7 @@
           call getmean2(vm, y, eta, g2vm, g22vm, ny, ind)
         end if
 
-        write(*,*) "Finished mean flow"
+        if (verbose) write(*,*) "Finished mean flow"
                     
 !.... Initialize the metric terms for curvature
 
@@ -675,7 +674,7 @@
         
 !==============================================================================
 
-        write(*,*) "Finished building matrices"
+        if(verbose) write(*,*) "Finished building matrices"
 
 !.... initialize
 
@@ -961,7 +960,7 @@
 
 !.... form the extended system
 
-        write(*,*) "Forming the extended system"
+        if (verbose) write(*,*) "Forming the extended system"
 
         A0   = zero
         B0   = zero
@@ -1016,7 +1015,7 @@
           B0(i,i-ndof*ny) = one
         end do
         
-        write(*,*) "Solving eigenvalue problem..."
+        if (verbose) write(*,*) "Solving eigenvalue problem..."
 
 !.... IMSL regular complex eigensolver
 
@@ -1058,7 +1057,7 @@
         deallocate (work, rwork)
         end if
 
-        write(*,*) "Output results"
+        if (verbose) write(*,*) "Output results"
 
 !.... Note that I have to invert the eigenvalue since I defined the system
 !.... Backwards from Bridges and Morris!

@@ -16,16 +16,18 @@
         real, allocatable :: ym(:,:), vt(:,:,:), vs(:,:,:)
         
         integer :: i, j, k, nxm, nym, ndofm, ier, iver
-        real :: tmp
 
         character(80) :: base, fname
+        character(256) :: tmp
 !=============================================================================!
         
 !.... read the mean field and spline to the new grid
 
         base = 'profile'
         call makename(base,iver,fname)
-        write(*,"('Reading mean flow from:  ',a)") fname
+        if (verbose) then
+          write(*,"('   Reading mean flow from:  ',a)") fname
+        endif
         open (unit=10, file=fname, form='formatted', status='old',err=1000)
         
 !       read (10,*) nxm, nym, ndofm, ymaxm
@@ -37,9 +39,11 @@
         nxm = 1
         nym = 0
  20     continue
-        read(10,*,end=30) tmp
-        nym = nym + 1
-        goto 20
+          read(10,'(a)',end=30) tmp
+          if (tmp(1:1).ne.'#') then
+            nym = nym + 1
+          endif
+          goto 20
  30     continue
         rewind(10)
 
@@ -51,10 +55,16 @@
         end if
         
         do i = 1, nxm
-          do j = 1, nym
-            read (10,*) ym(j,i), (vt(j,i,k),k=1,ndof)
-            vt(j,i,3) = zero ! parallel flow assumption
-          end do
+          j = 1
+ 40       continue
+            read (10,'(a)',end=50) tmp 
+            if (tmp(1:1).ne.'#') then
+              read (tmp,*) ym(j,i), (vt(j,i,k),k=1,ndof)
+              vt(j,i,3) = zero ! parallel flow assumption
+              j = j + 1
+            endif
+            goto 40
+ 50       continue
           ym(j,i) = ym(j,i)
           call SPLINE(nym, ym(1,i), vt(1,i,1), vs(1,i,1))
           call SPLINE(nym, ym(1,i), vt(1,i,2), vs(1,i,2))
@@ -92,7 +102,9 @@
 
         base = 'first'
         call makename(base,iver,fname)
-        write(*,"('Reading first derivative from:  ',a)") fname
+        if (verbose) then
+          write(*,"('   Reading first derivative from:  ',a)") fname
+        endif
         open (unit=10, file=fname, form='formatted', status='old',err=1000)
 
         do i = 1, nxm
@@ -133,7 +145,9 @@
 
         base = 'second'
         call makename(base,iver,fname)
-        write(*,"('Reading second derivative from:  ',a)") fname
+        if (verbose) then
+          write(*,"('   Reading second derivative from:  ',a)") fname
+        endif 
         open (unit=10, file=fname, form='formatted', status='old',err=1000)
 
         do i = 1, nxm

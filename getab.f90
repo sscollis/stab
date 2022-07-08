@@ -24,7 +24,7 @@
         complex, allocatable :: eval(:), evec(:,:)
         complex :: omega, alpha, beta, k
         real :: x, Re, Ma, Pr, Yi, Ymax
-        character*80 :: base, fname
+        character(80) :: base, fname
         integer :: j, iloc, nmax, icount
         integer :: iver, iver1, iver2, iver_inc
         integer :: ind, ind1, ind2, ind_inc

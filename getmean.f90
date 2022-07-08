@@ -22,7 +22,9 @@
         
         base = 'profile'
         call makename(base,iver,fname)
-        write(*,"(/,'Reading mean flow from:  ',a)") fname
+        if (verbose) then
+          write(*,"(/,'Reading mean flow from:  ',a)") fname
+        endif
         open (unit=10, file=fname, form='formatted', status='old',err=1000)
         
 !       read (10,*) nxm, nym, ndofm, ymaxm

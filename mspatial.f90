@@ -11,11 +11,11 @@
         implicit none
         real :: omin, omax, oinc
         real :: bmin, bmax, binc
-        real :: tmp
-        integer :: i, itmp, nbody
+        integer :: i, j, itmp, nbody, nskip, nfile
         real,allocatable :: xb(:), delta(:)
         integer :: io, ib, no, nb, iver, ind, ind1, ind2, ind_inc, dtype
-        character*80 :: base="eig ", name
+        character(80) :: base="eig ", name 
+        character(256) :: tmp
 !==============================================================================
         write (*,"('Enter omega_min, omega_max, omega_inc ==> ',$)")
         read (*,*) omin, omax, oinc
@@ -23,27 +23,45 @@
         read (*,*) bmin, bmax, binc
         write (*,"('Enter ind1, ind2 , ind_inc ==> ',$)")
         read (*,*) ind1, ind2, ind_inc
-        write (*,"('Enter dtype ==> ',$)")      ! 0 = Cheby or 1 = FD
+        write (*,"('Enter dtype (0=Cheby, 1=FD) ==> ',$)")
         read (*,*) dtype
 
 !.... Use the boundary layer thickness data to scale the mesh spacing
 
         open(10,file='delta.dat',status='old')
         nbody = 0
+        nskip = 0
+        nfile = 0
  20     continue
         read(10,*,end=30) tmp
-        nbody = nbody + 1
+        nfile = nfile + 1
+        if (tmp(1:1).eq.'#') then
+          nskip = nskip + 1
+        else
+          nbody = nbody + 1
+        endif
         goto 20
  30     continue
         rewind(10)
         if (ind1.lt.1 .or. ind2.gt.nbody) then
-          write(*,"('ERROR: illegal index...check body.dat')")
+          write(*,"('ERROR: illegal index...check delta.dat')")
           call exit(1)
         end if
         allocate( xb(nbody), delta(nbody) )
+#if 0
         do i = 1, nbody
           read(10,*) xb(i), delta(i)
         end do
+#else     
+        i = 1
+        do j = 1, nfile
+          read(10,'(a)') tmp
+          if (tmp(1:1).ne.'#') then
+            read(tmp,*) xb(i), delta(i)
+            i = i + 1
+          endif
+        enddo
+#endif
         close(10)
 
         if (oinc .eq. zero) oinc = one
@@ -77,7 +95,7 @@
         end do
 
         return
-  5     format(/,110('='),/, &
+  5     format(/,95('='),/, &
           'Index',' iver', &
           '      s       ', &
           '     Y_i      ', &
@@ -85,6 +103,6 @@
           '    omega_i   ', &
           '    beta_r    ', &
           '    beta_i    ', &
-          /,110('='))
+          /,95('='))
  10     format(2(1x,i3,1x),6(1pe13.6,1x))
         end

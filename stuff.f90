@@ -53,6 +53,10 @@
           
           integer :: ny = 1, nx = 1, nz = 1, nsd = 3, ndof = 5
           real    :: x, ymin, ymax, dy, aa, bb, yi
+
+!.... Other
+ 
+          logical, parameter :: verbose=.false.
                   
         end module stuff
 
