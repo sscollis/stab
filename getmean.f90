@@ -13,7 +13,11 @@
         real, allocatable :: ym(:,:), vt(:,:,:), vs(:,:,:)
         
         integer :: i, j, k, nxm, nym, ndofm, ier, iver
+#if 0
         real :: tmp
+#else
+        character(256) :: tmp
+#endif
         
         character(80) :: base, fname
 !=============================================================================!
@@ -36,8 +40,15 @@
         nxm = 1
         nym = 0
  20     continue
-        read(10,*,end=30) tmp
-        nym = nym + 1
+#if 0
+          read(10,*,end=30) tmp
+          nym = nym + 1
+#else
+          read(10,'(a)',end=30) tmp
+          if (tmp(1:1).ne.'#') then
+            nym = nym + 1
+          endif
+#endif
         goto 20
  30     continue
         rewind(10)
@@ -50,10 +61,23 @@
         end if
         
         do i = 1, nxm
+#if 0
           do j = 1, nym
             read (10,*) ym(j,i), (vt(j,i,k),k=1,ndof)
             vt(j,i,3) = zero ! parallel flow assumption
           end do
+#else
+          j = 1
+ 40       continue
+            read (10,'(a)',end=50) tmp
+            if (tmp(1:1).ne.'#') then
+              read (tmp,*) ym(j,i), (vt(j,i,k),k=1,ndof)
+              vt(j,i,3) = zero ! parallel flow assumption
+              j = j + 1
+            endif
+            goto 40
+ 50       continue
+#endif
           ym(j,i) = ym(j,i)
           call SPLINE(nym, ym(1,i), vt(1,i,1), vs(1,i,1))
           call SPLINE(nym, ym(1,i), vt(1,i,2), vs(1,i,2))

@@ -44,6 +44,7 @@
  30     continue
         rewind(10)
         if (ind1.lt.1 .or. ind2.gt.nbody) then
+          write(*,*) ind1, ind2, 1, nbody
           write(*,"('ERROR: illegal index...check delta.dat')")
           call exit(1)
         end if
