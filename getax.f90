@@ -34,7 +34,40 @@
         
         complex :: eval1, eval2, evalg, val
         complex :: parm1, parm2
+        real :: valr, vali
+
+        integer :: narg, iarg
+        character(80) :: arg
+        logical :: useIndex = .true.
+
 !=============================================================================!
+
+!.... parse the argument list
+
+        narg = iargc()
+        do iarg = 1, narg
+          call getarg(iarg,arg)
+          select case (arg(1:2))
+          case ('-i')
+            useIndex = .true.
+          case ('-v')
+            useIndex = .false.
+          case ('-h')
+            write(*,"('--------------------------------------------------')")
+            write(*,"('Usage:  getax [options]                           ')")
+            write(*,"('--------------------------------------------------')")
+            write(*,"('   -h:  this help                                 ')")
+            write(*,"('--------------------------------------------------')")
+            write(*,"('   -i:  locate based on index (default)          ')")
+            write(*,"('   -v:  locate based on eigenvalue               ')")
+            write(*,"('--------------------------------------------------')")
+            call exit(0)
+          case default
+            write(*,"('Argument ',i2,' ignored.')") iarg
+          end select
+        end do
+
+!.... get input from stdin
         
         write (*,"('Enter iver1, iver2, iver_inc ==> ',$)")
         read (*,*) iver1, iver2, iver_inc
@@ -124,21 +157,23 @@
           stop
         end if
         write(*,"(100('='),/)")
-#if 0        
-        write (*,"('Which eigenvalue ==> ',$)")
-        read (*,*) jloc
-#else
-        write (*,"('Approximate eigenvalue ==> ',$)")
-        read (*,*) val
-        diff = abs(val-eval(1))
-        jloc = 1
-        do j = 2, nmax
-          if (abs(val-eval(j)).lt.diff) then
-            diff = abs(val-eval(j))
-            jloc = j
-          endif
-        end do
-#endif
+        if (useIndex) then
+          write (*,"('Which eigenvalue ==> ',$)")
+          read (*,*) jloc
+        else
+          write (*,"('Approximate eigenvalue: real, imag ==> ',$)")
+          read (*,*) valr, vali
+          val = cmplx(valr,vali)
+          diff = abs(val-eval(1))
+          jloc = 1
+          do j = 2, nmax
+            if (abs(val-eval(j)).lt.diff) then
+              diff = abs(val-eval(j))
+              jloc = j
+            endif
+          end do
+        endif
+
         if (icount.eq.2) then
           eval2 = eval1
           parm2 = parm1

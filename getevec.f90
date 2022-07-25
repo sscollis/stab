@@ -23,19 +23,53 @@
         complex, allocatable :: eval(:), evec(:,:)
         complex :: omega, alpha, beta, k
         real :: x, Re, Ma, Pr, yi, ymax, scale
-        character(80) :: base, fname
-        integer :: iver, iloc, nmax
+        character(80) :: base, fname=''
+        integer :: iver, iloc, nmax, jloc
+        complex :: val
+        real :: valr, vali
 #if 0 
         integer, external :: iargc
 #endif
         integer :: narg, iarg
+        character(80) :: arg
+        logical :: useIndex=.true.
 !=============================================================================!
+
         narg = iargc()
-        if (narg.eq.0) then
+        do iarg = 1, narg
+          call getarg(iarg,arg)
+          if (arg(1:1) .ne. '-') then
+            if (fname.eq.'') then
+              fname = arg 
+            else
+              write(*,*) 'Only one filename argument allowed'
+              call exit(1) 
+            endif
+          else
+            select case (arg(1:2))
+            case ('-i')
+              useIndex = .true.
+            case ('-v')
+              useIndex = .false.
+            case ('-h')
+              write(*,"('--------------------------------------------------')")
+              write(*,"('Usage:  getevec [options] [evec file]             ')")
+              write(*,"('--------------------------------------------------')")
+              write(*,"('   -h:  this help                                 ')")
+              write(*,"('--------------------------------------------------')")
+              write(*,"('   -i:  locate based on index (default)           ')")
+              write(*,"('   -v:  locate based on eigenvalue                ')")
+              write(*,"('--------------------------------------------------')")
+              call exit(0)
+            case default
+              write(*,"('Argument ',i2,' ignored.')") iarg
+            end select
+          end if
+        end do
+
+        if (fname.eq.'') then
           write(*,"('Enter the Eigensystem filename ==> ',$)")
           read(*,"(a)") fname
-        else
-          call getarg(1,fname)
         end if
 
 !.... open the eigenvector file
@@ -110,14 +144,35 @@
           
         iver = 0
  10     continue
+#if 0
         write (*,"('Which eigenfunction ==> ',$)")
         read (*,*) j
-        
         if ( j.eq.0 ) stop
-
         if ( j.eq.-1 ) goto 20  ! reprint the eigenvalues
-
         if ( j.lt.-1 .or. j.gt.nmax ) goto 10   ! illegal input
+#else
+        if (useIndex) then
+          write (*,"('Which eigenfunction ==> ',$)")
+          read (*,*) j
+          if ( j.eq.0 ) stop
+          if ( j.eq.-1 ) goto 20  ! reprint the eigenvalues
+          if ( j.lt.-1 .or. j.gt.nmax ) goto 10   ! illegal input
+        else
+          write (*,"('Approximate eigenvalue: real, imag  ==> ',$)")
+          read (*,*) valr, vali
+          val = cmplx(valr,vali)
+          diff = abs(val-eval(1))
+          jloc = 1
+          do j = 2, nmax
+            if (abs(val-eval(j)).lt.diff) then
+              diff = abs(val-eval(j))
+              jloc = j
+            endif
+          end do
+          j = jloc
+          if (val.eq.0) stop
+        endif
+#endif
 
 !.... Scale the eigenvectors in a reasonable way
 
