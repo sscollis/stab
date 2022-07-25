@@ -51,7 +51,7 @@ endif
 ALL:  $(NAME) getevec getalpha getab getax
 
 $(NAME): $(MODS) $(OBJECTS) $(OBJS1) $(OBJS2)
-	$(FC) $(OFLAGS) $(LIB) $(MODS) $(OBJECTS) $(OBJS1) $(OBJS2) -o $(NAME)
+	$(FC) $(OFLAGS) $(MODS) $(OBJECTS) $(OBJS1) $(OBJS2) -o $(NAME) $(LIB)
 
 all: $(NAME) getevec getalpha getab getax
 
