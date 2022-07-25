@@ -29,10 +29,10 @@
         integer :: iver, iver1, iver2, iver_inc
         integer :: ind, ind1, ind2, ind_inc
         integer :: i, nbody, itmp, jloc
-        real :: error
+        real :: error, diff
         real, allocatable :: xb(:)
         
-        complex :: eval1, eval2, evalg
+        complex :: eval1, eval2, evalg, val
         complex :: parm1, parm2
 !=============================================================================!
         
@@ -124,10 +124,21 @@
           stop
         end if
         write(*,"(100('='),/)")
-        
+#if 0        
         write (*,"('Which eigenvalue ==> ',$)")
         read (*,*) jloc
-
+#else
+        write (*,"('Approximate eigenvalue ==> ',$)")
+        read (*,*) val
+        diff = abs(val-eval(1))
+        jloc = 1
+        do j = 2, nmax
+          if (abs(val-eval(j)).lt.diff) then
+            diff = abs(val-eval(j))
+            jloc = j
+          endif
+        end do
+#endif
         if (icount.eq.2) then
           eval2 = eval1
           parm2 = parm1
