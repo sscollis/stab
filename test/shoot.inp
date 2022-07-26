@@ -1,8 +1,9 @@
-0
-0.3 1000 1
-128 25
-1
-0 0
-0.08 0
-2
-T
+0             ! mattype
+0.3 1000 1    ! Ma, Re, Pr
+128 25        ! Ny, Ymax
+1             ! ievec (0/1)
+0 0           ! beta
+0.08 0        ! omega
+0             ! Curve (0/1)
+2             ! npcalc
+T             ! Output eigenfunctions
