@@ -1,11 +1,9 @@
-0                                             ! mattyp
-0.3 1000 1                                    ! Ma, Re, Pr
-2000 20                                       ! ny, ymax
-1                                             ! ievec (0/1):  compute eigenfunctions
-2.2822706636782E-001 -6.1126970666343E-003    ! alpha
-0 0                                           ! beta
-0.08 0                                        ! omega
-0                                             ! Profile index (now from parm.dat)
--1                                            ! Curvature (-1=none) also from parm.dat
-2                                             ! npcalc (see input.f90)
-T                                             ! Output eigenfunctions (only get last one)
+0                   ! mattyp
+0.3 1000 1          ! Ma, Re, Pr
+2000 20             ! ny, ymax
+1                   ! ievec (0/1):  compute eigenfunctions
+0 0                 ! beta
+0.08 0              ! omega
+0                   ! Curvature (0/1)
+2                   ! npcalc (see input.f90)
+T                   ! Output eigenfunctions (only get last one)
