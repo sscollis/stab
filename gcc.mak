@@ -15,7 +15,10 @@ OFLAGS   =
 LIB      = -L$(HOME)/local/OpenBLAS/lib -lopenblas
 FC       = gfortran
 F77      = gfortran
-
+#
+# Turn on NR by default
+USE_NR = 1
+#
 .SUFFIXES: .f90
 
 MODS = stuff.o stencils.o
