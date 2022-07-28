@@ -37,3 +37,14 @@ getalpha
 getax
 getevec
 stab
+
+#Datafiles
+*.dat
+first.*
+second.*
+profile.*
+cprofile.*
+csecond.*
+cfirst.*
+time.1
+space.1
