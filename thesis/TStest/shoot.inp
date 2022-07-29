@@ -4,5 +4,7 @@
 1                                  ! ievec (0/1):  compute eigenfunctions
 0 0                                ! beta
 0.08 0                             ! omega
+0                                  ! curve (0/1)
+T				   ! parallel flow (T/F)
 2                                  ! npcalc (see input.f90)
 T                                  ! Output eigenfunctions (only get last one)
