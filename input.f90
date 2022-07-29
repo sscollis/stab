@@ -43,7 +43,7 @@
         call getmat(te,   rmue, rlme, cone, dmue, d2mue, &
                     dlme, d2lme, dcone, d2cone)
 
-        write (*,"('Enter ny, Yi, Ymax ==> ',$)")
+        write (*,"('Enter ny, Yi, Ymax (0 for Cheby) ==> ',$)")
         read (*,*) ny, yi, ymax
         write (*,"('Compute eigenfuntions (0/1) ==> ',$)")
         read (*,*) ievec
