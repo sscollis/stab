@@ -18,7 +18,7 @@ EOF
 ../../stab < spatial.inp
 ../../getevec << EOF
 evec.dat
-371
+372
 0
 EOF
 #
