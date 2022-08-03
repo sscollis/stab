@@ -65,7 +65,7 @@
             endif
             goto 40
  50       continue
-          ym(j,i) = ym(j,i)
+          !ym(j,i) = ym(j,i)
           call SPLINE(nym, ym(1,i), vt(1,i,1), vs(1,i,1))
           call SPLINE(nym, ym(1,i), vt(1,i,2), vs(1,i,2))
           call SPLINE(nym, ym(1,i), vt(1,i,3), vs(1,i,3))
@@ -112,7 +112,7 @@
             read (10,*) ym(j,i), (vt(j,i,k),k=1,ndof)
             vt(j,i,3) = zero ! parallel flow assumption
           end do
-          ym(j,i) = ym(j,i)
+          !ym(j,i) = ym(j,i)
           call SPLINE(nym, ym(1,i), vt(1,i,1), vs(1,i,1))
           call SPLINE(nym, ym(1,i), vt(1,i,2), vs(1,i,2))
           call SPLINE(nym, ym(1,i), vt(1,i,3), vs(1,i,3))
@@ -155,7 +155,7 @@
             read (10,*) ym(j,i), (vt(j,i,k),k=1,ndof)
             vt(j,i,3) = zero ! parallel flow assumption
           end do
-          ym(j,i) = ym(j,i)
+          !ym(j,i) = ym(j,i)
           call SPLINE(nym, ym(1,i), vt(1,i,1), vs(1,i,1))
           call SPLINE(nym, ym(1,i), vt(1,i,2), vs(1,i,2))
           call SPLINE(nym, ym(1,i), vt(1,i,3), vs(1,i,3))

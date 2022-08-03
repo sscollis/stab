@@ -7,19 +7,19 @@ tail -n +2 csecond.dat > second.0
 # Temporal problem
 #
 ../../stab < temporal.inp
-../../getevec << EOF
+../../getevec -v << EOF
 evec.dat
-480
-0
+1.1467880189410E-001   2.3844535276599E-003
+0 0
 EOF
 #
 # Spatial problem
 #
 ../../stab < spatial.inp
-../../getevec << EOF
+../../getevec -v << EOF
 evec.dat
-372
-0
+2.2804739411180E-001  -6.5163146952626E-003
+0 0
 EOF
 #
 # Shooting to cleanup spatial 

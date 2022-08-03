@@ -78,7 +78,7 @@
             goto 40
  50       continue
 #endif
-          ym(j,i) = ym(j,i)
+          !ym(j,i) = ym(j,i)
           call SPLINE(nym, ym(1,i), vt(1,i,1), vs(1,i,1))
           call SPLINE(nym, ym(1,i), vt(1,i,2), vs(1,i,2))
           call SPLINE(nym, ym(1,i), vt(1,i,3), vs(1,i,3))

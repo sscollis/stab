@@ -6,7 +6,7 @@
 #  Revised: 1-17-2020
 #=============================================================================
 NAME     = stab
-DEBUG    =
+DEBUG    = -ffpe-trap=invalid -g -fbounds-check
 OPT      = -O2
 FFLAGS   = -cpp -ffixed-line-length-120 -fdefault-real-8 -fdefault-double-8 \
            -std=legacy $(DEFINES) $(OPT) $(DEBUG)
@@ -55,6 +55,7 @@ ALL:  $(NAME) getevec getalpha getab getax
 
 $(NAME): $(MODS) $(OBJECTS) $(OBJS1) $(OBJS2)
 	$(FC) $(OFLAGS) $(MODS) $(OBJECTS) $(OBJS1) $(OBJS2) -o $(NAME) $(LIB)
+	\cp $(NAME) $(NAME).exe
 
 all: $(NAME) getevec getalpha getab getax
 
@@ -73,12 +74,16 @@ clean:
 
 getevec: getevec.o
 	$(FC) $(OFLAGS) getevec.o -o getevec
+	\cp getevec getevec.exe
 
 getalpha: getalpha.o
 	$(FC) $(OFLAGS) getalpha.o -o getalpha
+	\cp getalpha getalpha.exe
 
 getab: getab.o
 	$(FC) $(OFLAGS) getab.o -o getab
+	\cp getab getab.exe
 
 getax: getax.o
 	$(FC) $(OFLAGS) getax.o -o getax
+	\cp getax getax.exe
