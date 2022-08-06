@@ -26,7 +26,7 @@ You can easily replace these with public versions and are encouraged to do so.
 1.  It would be easy to remove the dependency on NR and I encourage
     someone to do so.
 2.  You may **not** add the NR software to this repository and you may only use
-    it if you have a valid license to do so.
+    it if you have a valid license to do so.  Please do so responsibly.
 
 ## Test Cases
 
