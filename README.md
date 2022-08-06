@@ -1,6 +1,6 @@
 # STAB:  Compressible stability solver
 
-‘Stab‘ uses a direct approach with either Chebyshev collocation or high-order
+`Stab` uses a direct approach with either Chebyshev collocation or high-order
 finite difference.   This is complemented by the `shoot` solver which uses
 an ODE solver with Conte orthogonalization and shooting to satisfy the boundary
 conditions.  I suggest using `shoot` to polish the eigensolutions identified
