@@ -1,13 +1,14 @@
 # STAB:  Compressible stability solver
 
-This uses a direct approach using either Chebyshev collocation or high-order
+‘Stab‘ uses a direct approach with either Chebyshev collocation or high-order
 finite difference.   This is complemented by the `shoot` solver which uses
 an ODE solver with Conte orthogonalization and shooting to satisfy the boundary
 conditions.  I suggest using `shoot` to polish the eigensolutions identified
 by `stab`.
 
 The `stab` code has been updated to build with the GCC gfortran compiler on
-both MacOS and Linux and older builds have not been recently used.
+both MacOS and Linux and older builds (SGI, Cray, IBM) have not been recently 
+used so makefiles for those will need updates.
 
 ## Building
 
@@ -37,7 +38,7 @@ Case       |  Description
 `CFtest`   |  Cross-flow vortex test case
 `mixl`     |  Mixing layer test case
 `test`     |  Test case for experimentation
-`vk`       |  Case for Vinod Kumar
+`vk`       |  Case for a student
 
 ## Contact
 
