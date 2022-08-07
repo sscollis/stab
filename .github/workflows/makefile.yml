@@ -1,4 +1,4 @@
-nname: Makefile CI MacOS
+name: Makefile CI MacOS
 
 on:
   push:
