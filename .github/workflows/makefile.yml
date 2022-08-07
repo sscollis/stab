@@ -20,6 +20,9 @@ jobs:
     #    repository: sscollis/NR-utilities
     #    path:  NR-utilities
 
+    #- name: configure shoot
+    #  run:  cd shoot && ln -s gcc.mak Makefile
+    
     #- name: build NR-utilities
     #  run:  cd NR-utilties && make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11
       
@@ -29,8 +32,8 @@ jobs:
         repository: sscollis/shoot
         path:  shoot
         
-    - name: check shoot
-      run:  ls $GITHUB_WORKSPACE && ls && cd shoot && ls  
+    - name: configure shoot
+      run:  cd shoot && ln -s gcc.mak Makefile
 
     - name: build shoot
       run:  cd shoot && make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11
