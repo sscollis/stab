@@ -1,0 +1,36 @@
+nname: Makefile CI MacOS
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+          
+    - name: print Github environment
+      run: env | sort
+      
+    #- name: Add util to path
+    #  run: echo "$GITHUB_WORKSPACE/util" >> $GITHUB_PATH
+      
+    - name: echo paths
+      run: echo $HOME && echo $GITHUB_WORKSPACE && echo $PATH
+
+    - name: install OpenBLAS
+      run: brew install openblas
+       
+    - name: configure Stab
+      run: ln -s gcc.mak Makefile
+      
+    - name: build Stab
+      run: make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11
+          
+    - name: Run crossflow vortex test
+      run: cd thesis/CFtest && ./run.sh
