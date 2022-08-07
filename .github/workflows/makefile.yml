@@ -46,10 +46,10 @@ jobs:
         path: fsc
         
     - name: configure fsc
-      run:  cd shoot && ln -s gcc.mak Makefile
+      run:  cd fsc && ln -s gcc.mak Makefile
 
     - name: build fsc
-      run:  cd shoot && make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11 LIBNR_DIR=$GITHUB_WORKSPACE/NR-utilities
+      run:  cd fsc && make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11
     
     - name: print Github environment
       run: env | sort
