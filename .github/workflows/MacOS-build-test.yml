@@ -52,7 +52,7 @@ jobs:
       run:  cd fsc && make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11
       
     - name: install fsc
-      run:  ln -s fsc $GITHUB_WORKSPACE/.. && ln -s fsc $GITHUB_WORKSPACE/../..
+      run:  ls $GITHUB_WORKSPACE && echo break && ls $GITHUB_WORKSPACE/..
     
     - name: print Github environment
       run: env | sort
