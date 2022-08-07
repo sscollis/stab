@@ -22,10 +22,10 @@ jobs:
         path:  NR-utilities
     
     - name: configure NR-utilities
-      run:  cd shoot && ln -s gcc.mak Makefile
+      run:  cd NR-utilities && ln -s gcc.mak Makefile
 
     - name: build NR-utilities
-      run:  cd shoot && make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11
+      run:  cd NR-utilities && make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11
       
     - name: checkout shoot
       uses: actions/checkout@v3
