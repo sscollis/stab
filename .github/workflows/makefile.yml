@@ -14,11 +14,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    #- name: checkout NR-utilties
-    # uses: actions/checkout@v3
-    #  with:
-    #    repository: sscollis/NR-utilities
-    #    path:  NR-utilities
+    - name: checkout NR-utilties
+      uses: actions/checkout@v3
+      with:  
+        repository: sscollis/NR-utilities
+        path:  NR-utilities
 
     #- name: configure shoot
     #  run:  cd shoot && ln -s gcc.mak Makefile
@@ -36,7 +36,7 @@ jobs:
       run:  cd shoot && ln -s gcc.mak Makefile
 
     - name: build shoot
-      run:  cd shoot && make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11
+      run:  cd shoot && make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11 
 
     - name: print Github environment
       run: env | sort
