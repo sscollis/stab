@@ -1,4 +1,5 @@
 #!/bin/bash
+echo $FSC_DIR
 FSC_DIR=${FSC_DIR:-../../../fsc}
 $FSC_DIR/fsc < fsc.inp 
 #../../../fsc/fsc < fsc.inp
