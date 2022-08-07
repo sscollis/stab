@@ -43,13 +43,13 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: sscollis/fsc
-        path: ../fsc
+        path: fsc
         
     - name: configure fsc
-      run:  cd ../fsc && ln -s gcc.mak Makefile
+      run:  cd fsc && ln -s gcc.mak Makefile
 
     - name: build fsc
-      run:  cd ../fsc && make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11
+      run:  cd fsc && make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11
       
     - name: install fsc
       run:  ls $GITHUB_WORKSPACE && echo break && ls $GITHUB_WORKSPACE/..
@@ -73,4 +73,4 @@ jobs:
       run: make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11 LIBNR_DIR=$GITHUB_WORKSPACE/NR-utilities
           
     - name: Run crossflow vortex test
-      run: cd thesis/CFtest && ./run.sh
+      run: cd thesis/CFtest && ./run.sh FSC_DIR=$GITHUB_WORKDIR/fsc
