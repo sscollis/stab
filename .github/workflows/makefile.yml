@@ -28,6 +28,9 @@ jobs:
       with:
         repository: sscollis/shoot
         path:  shoot
+        
+    - name: check shoot
+      run:  ls $GITHUB_WORKSPACE && ls && cd shoot && ls  
 
     - name: build shoot
       run:  cd shoot && make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11
