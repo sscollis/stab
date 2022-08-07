@@ -73,4 +73,4 @@ jobs:
       run: make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11 LIBNR_DIR=$GITHUB_WORKSPACE/NR-utilities
           
     - name: Run crossflow vortex test
-      run: cd thesis/CFtest && env FSC_DIR=$GITHUB_WORKDIR/fsc ./run.sh 
+      run: cd thesis/CFtest && env FSC_DIR=$GITHUB_WORKSPACE/fsc ./run.sh 
