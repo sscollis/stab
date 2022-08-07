@@ -20,7 +20,7 @@ jobs:
         repository: sscollis/NR-utilities
         token: ${{ secrets.GH_PAT }}
         path:  NR-utilities
-
+        
     - name: configure NR-utilities
       run:  cd shoot && ln -s gcc.mak Makefile
 
