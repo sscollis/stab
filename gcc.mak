@@ -12,7 +12,8 @@ FFLAGS   = -cpp -ffixed-line-length-120 -fdefault-real-8 -fdefault-double-8 \
            -std=legacy $(DEFINES) $(OPT) $(DEBUG)
 F90FLAGS = -cpp -fdefault-real-8 -fdefault-double-8 $(DEFINES) $(OPT) $(DEBUG)
 OFLAGS   =
-LIB      = -L$(HOME)/local/OpenBLAS/lib -lopenblas
+#LIB      = -L$(HOME)/local/OpenBLAS/lib -lopenblas
+LIB      = -L/usr/local/opt/openblas/lib -lopenblas
 FC       = gfortran
 F77      = gfortran
 #
