@@ -13,7 +13,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-          
+    
+    - name: checkout NR-utilties
+      uses: actions/checkout@v3
+      with:
+        repository: sscollis/NR-utilities
+        token: ${{ secrets.GH_PAT }}
+        path:  NR-utilities
+
+    - name: build NR-utilities
+      run:  cd NR-utilties && make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11
+
     - name: print Github environment
       run: env | sort
       
