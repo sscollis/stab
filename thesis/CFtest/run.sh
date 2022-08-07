@@ -1,5 +1,7 @@
 #!/bin/bash
-../../../fsc/fsc < fsc.inp
+FSC_DIR=${FSC_DIR:-../../../fsc}
+$FSC_DIR/fsc < fsc.inp 
+#../../../fsc/fsc < fsc.inp
 tail -n +2 cprofile.dat > profile.0
 tail -n +2 cfirst.dat > first.0
 tail -n +2 csecond.dat > second.0
