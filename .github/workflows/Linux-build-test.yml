@@ -36,6 +36,9 @@ jobs:
     - name: check ndiff PATH
       run: echo $PATH && ./ndiff -h && pwd && ls && echo ====== && ndiff -h
       
+    - name: install OpenBLAS
+      run: brew install openblas
+
     - name: checkout shoot
       uses: actions/checkout@v3
       with:
@@ -46,7 +49,7 @@ jobs:
       run:  cd shoot && ln -s gcc.mak Makefile
 
     - name: build shoot
-      run:  cd shoot && make CC=gcc FC=gfortran CC=gcc F77=gfortran LIBNR_DIR=$GITHUB_WORKSPACE/NR-utilities
+      run:  cd shoot && make CC=gcc FC=gfortran CC=gcc F77=gfortran LIBNR_DIR=$GITHUB_WORKSPACE/NR-utilities 
 
     - name: checkout fsc
       uses: actions/checkout@v3
@@ -72,9 +75,6 @@ jobs:
     - name: echo paths
       run: echo $HOME && echo $GITHUB_WORKSPACE && echo $PATH
 
-    - name: install OpenBLAS
-      run: brew install openblas
-       
     - name: configure Stab
       run: ln -s gcc.mak Makefile
       
