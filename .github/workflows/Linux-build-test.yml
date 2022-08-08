@@ -72,14 +72,14 @@ jobs:
     - name: echo paths
       run: echo $HOME && echo $GITHUB_WORKSPACE && echo $PATH
 
-    #- name: install OpenBLAS
-    #  run: brew install openblas
+    - name: install OpenBLAS
+      run: brew install openblas
        
     - name: configure Stab
       run: ln -s gcc.mak Makefile
       
     - name: build Stab
-      run: make CC=gcc FC=gfortran CC=gcc F77=gfortran LIBNR_DIR=$GITHUB_WORKSPACE/NR-utilities
+      run: make CC=gcc FC=gfortran CC=gcc F77=gfortran LIBNR_DIR=$GITHUB_WORKSPACE/NR-utilities 
           
     - name: Run crossflow vortex test
       run: cd thesis/CFtest && env FSC_DIR=$GITHUB_WORKSPACE/fsc ./run.sh 
