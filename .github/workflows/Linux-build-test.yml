@@ -83,3 +83,6 @@ jobs:
           
     - name: Run crossflow vortex test
       run: cd thesis/CFtest && env FSC_DIR=$GITHUB_WORKSPACE/fsc ./run.sh 
+          
+    - name: Run TS test
+      run: cd thesis/TStest && env FSC_DIR=$GITHUB_WORKSPACE/fsc ./run.sh 
