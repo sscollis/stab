@@ -27,6 +27,15 @@ jobs:
     - name: build NR-utilities
       run:  cd NR-utilities && make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11 
       
+    - name: install ndiff
+      run:  curl -s -O ftp://ftp.math.utah.edu/pub/misc/ndiff-2.00.tar.gz && tar -xzf ndiff-2.00.tar.gz && cd ndiff-2.00 && ./configure && make all && ./ndiff -h && cp ndiff $GITHUB_WORKSPACE
+
+    - name: Add ndiff to path
+      run: echo "$GITHUB_WORKSPACE" >> $GITHUB_PATH
+      
+    - name: check ndiff PATH
+      run: echo $PATH && ./ndiff -h && pwd && ls && echo ====== && ndiff -h
+      
     - name: checkout shoot
       uses: actions/checkout@v3
       with:
