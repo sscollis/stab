@@ -31,9 +31,11 @@ EOF
 #
 # check quality of solution 
 #
-ndiff -abserr 1e-8 space.1 space.ref &&
+echo
+echo "ndiff of space" && \
+ndiff -abserr 1e-8 space.1 space.ref && \
+echo "ndiff of time" && \
 ndiff -abserr 1e-8 time.1 time.ref
 status=$?
-echo
 echo 'ndiff completed with status:' $status
 exit $status 
