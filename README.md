@@ -26,7 +26,9 @@ You can easily replace these with public versions and are encouraged to do so.
 1.  It would be easy to remove the dependency on NR and I encourage
     someone to do so.
 2.  You may **not** add the NR software to this repository and you may only use
-    it if you have a valid license to do so.  Please do so responsibly.
+    it if you have a valid license to do so.
+3.  I have not recently tested the finite-Reynolds number surface roughness
+    solver so please use with caution.
 
 ## Test Cases
 
