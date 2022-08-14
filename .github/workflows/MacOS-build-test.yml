@@ -46,7 +46,7 @@ jobs:
       run:  cd shoot && ln -s gcc.mak Makefile
 
     - name: build shoot
-      run:  cd shoot && make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11 LIBNR_DIR=$GITHUB_WORKSPACE/NR-utilities
+      run:  cd shoot && make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11 USE_HOMEBREW_OPENBLAS=1 LIBNR_DIR=$GITHUB_WORKSPACE/NR-utilities
 
     - name: checkout fsc
       uses: actions/checkout@v3
@@ -79,10 +79,9 @@ jobs:
       run: ln -s gcc.mak Makefile
       
     - name: build Stab
-      run: make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11 LIBNR_DIR=$GITHUB_WORKSPACE/NR-utilities
+      run: make CC=gcc FC=gfortran-11 CC=gcc-11 F77=gfortran-11 USE_HOMEBREW_OPENBLAS=1 LIBNR_DIR=$GITHUB_WORKSPACE/NR-utilities
 
     - name: Run crossflow vortex test
       run: cd thesis/CFtest && env FSC_DIR=$GITHUB_WORKSPACE/fsc ./run.sh 
-
     - name: Run TS test
       run: cd thesis/TStest && env FSC_DIR=$GITHUB_WORKSPACE/fsc ./run.sh 
