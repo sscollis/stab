@@ -23,13 +23,13 @@ LIB      = -L/home/linuxbrew/.linuxbrew/opt/openblas/lib -lopenblas
 else
 LIB      = -L$(HOME)/local/OpenBLAS/lib -lopenblas
 endif
-#LIB      = -L$(HOME)/local/OpenBLAS/lib -lopenblas
-#LIB      = -L/usr/local/opt/openblas/lib -lopenblas
+#LIB     = -L$(HOME)/local/OpenBLAS/lib -lopenblas
+#LIB     = -L/usr/local/opt/openblas/lib -lopenblas
 FC       = gfortran
 F77      = gfortran
 #
 # Turn on NR by default
-USE_NR = 1
+# USE_NR = 1
 #
 .SUFFIXES: .f90
 
@@ -54,7 +54,8 @@ ifdef USE_NR
   LIB += -L$(LIBNR_DIR) -lnr
 else
   $(warning STAB currently requires Numerical-Recipes in FORTRAN routines)
-  $(info See README.md for details, build with USE_NR=1)
+  #$(info See README.md for details, build with USE_NR=1)
+  $(error See README.md for details, build with USE_NR=1)
 endif
 #
 # These are the NR files explicitly needed by STAB
